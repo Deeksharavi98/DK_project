@@ -1,0 +1,38 @@
+/*@!Encoding:1252*/
+/*@!Encoding:1252*/
+/*@!Encoding:1252*/
+/*@!Encoding:1252*/
+/*@!Encoding:1252*/
+variables
+{
+  message BCMMessage b;
+}
+
+ON message BCMMessage
+{
+  if(this.BCM_Signal==0x1)
+  {
+    @indicator::Sys_Red = 1;
+    @indicator::Sys_Orange =0;
+    @indicator::Sys_Yellow =0;
+  }
+else if(this.BCM_Signal==0x2)
+  {
+    @indicator::Sys_Red =0;
+    @indicator::Sys_Orange =1;
+    @indicator::Sys_Yellow =0;
+  }
+  else if (this.BCM_Signal == 0x3)
+  {
+    @indicator::Sys_Red =0;
+    @indicator::Sys_Orange=0;
+    @indicator::Sys_Yellow = 1;
+  }
+  else 
+ {
+  @indicator::Sys_Red =0;
+  @indicator::Sys_Orange =0;
+  @indicator::Sys_Yellow = 0;
+ }
+}
+
